@@ -8,16 +8,15 @@ export default function HomeScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const router = useRouter();
 
-  useEffect(() => {
+useEffect(() => {
     // Iniciamos la animación de aparición (fade-in)
     Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 1500, // Duración en milisegundos (1.5 segundos)
       useNativeDriver: true, // Mejora el rendimiento usando el motor nativo
     }).start(() => {
-      // Opcional: Aquí puedes agregar lógica para navegar a otra pantalla
-      // después de que termine la animación, por ejemplo:
-      // setTimeout(() => router.replace('/dashboard'), 1000);
+      // Usamos router.replace para que no puedan volver a esta pantalla usando el botón de "atrás"
+      setTimeout(() => router.replace('/bodega/login'), 1000);
     });
   }, [fadeAnim, router]);
 

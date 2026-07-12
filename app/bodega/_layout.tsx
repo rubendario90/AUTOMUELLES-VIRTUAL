@@ -14,15 +14,31 @@ export default function BodegaLayout() {
         headerTintColor: colorScheme === 'dark' ? '#ffffff' : '#000000',
       }}
     >
-      {/* Esta es la pantalla principal de la bodega (index.tsx) */}
+      {/* Pantalla de Login sin barra superior */}
+
+      <Stack.Screen 
+        name="login" 
+        options={{ headerShown: false }} 
+      />
+
+       <Stack.Screen 
+        name="register" 
+        options={{ headerShown: false }} 
+      />
+      
+       <Stack.Screen 
+        name="registration-success" 
+        options={{ headerShown: false }} 
+      />
+      {/* Esta es la pantalla principal del panel de bodega */}
       <Stack.Screen 
         name="index" 
         options={{ 
-          title: 'Dashboard Bodega',
-          headerShown: true // Cámbialo a false si no quieres la barra superior
+          title: 'Control de Bodega',
+          headerBackVisible: false // Evita que al hacer "atrás" regresen al login
         }} 
       />
-      
+
       {/* Si luego creas un archivo app/(bodega)/inventario.tsx, lo agregas aquí: */}
       {/* <Stack.Screen name="inventario" options={{ title: 'Mi Inventario' }} /> */}
     </Stack>

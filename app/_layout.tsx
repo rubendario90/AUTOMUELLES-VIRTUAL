@@ -15,9 +15,12 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        {/* Tu app principal actual */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-        <Stack.Screen name="(bodega)" options={{ headerShown: false }} />
+        
+        {/* Tu sección independiente de Bodega */}
+       <Stack.Screen name="bodega" options={{ headerShown: false }} />
+        
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
