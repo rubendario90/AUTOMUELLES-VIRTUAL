@@ -23,20 +23,30 @@ export default function BodegaLogin() {
     try {
       setLoading(true);
       
+      // LOG 1: Verificar la URL y los datos que estás a punto de enviar
+      console.log('🚀 Intentando hacer login a la URL:', `${API_URL}/login`);
+      console.log('📦 Datos a enviar:', { email: email, password: password });
+
       // 2. Hacer la petición POST a tu backend de Laravel
-      const response = await fetch(`${API_URL}/login`, {
+     const response = await fetch(`${API_URL}/mobile/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36'
         },
         body: JSON.stringify({
           email: email,
           password: password,
         }),
       });
+      // LOG 2: Verificar el código de estado HTTP (ej: 200, 401, 404, 500)
+      console.log('📡 Status de la respuesta HTTP:', response.status);
 
       const data = await response.json();
+
+      // LOG 3: Ver el cuerpo exacto de lo que responde Laravel
+      console.log('✅ Respuesta parseada del backend (JSON):', data);
 
       // 3. Manejar errores si el backend responde con error (ej. 401 Unauthorized)
       if (!response.ok) {
@@ -53,16 +63,17 @@ export default function BodegaLogin() {
       }
 
       // 5. Redirigir al panel principal de la bodega
-      // Nota: Asegúrate de usar los paréntesis si la carpeta los tiene
-     router.replace('./bodega/index');  
+      router.replace('/bodega/register'); 
 
     } catch (error: any) {
+      // LOG 4: Capturar cualquier error de red, de CORS o excepciones lanzadas
+      console.log('❌ Error capturado en el catch:', error);
+      
       Alert.alert('Error de Autenticación', error.message || 'No se pudo conectar con el servidor.');
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
