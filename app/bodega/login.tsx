@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Switch, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Switch, Alert, ActivityIndicator, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 
@@ -28,7 +28,7 @@ export default function BodegaLogin() {
       console.log('📦 Datos a enviar:', { email: email, password: password });
 
       // 2. Hacer la petición POST a tu backend de Laravel
-     const response = await fetch(`${API_URL}/mobile/login`, {
+      const response = await fetch(`${API_URL}/mobile/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,17 +53,25 @@ export default function BodegaLogin() {
         throw new Error(data.message || 'Credenciales incorrectas o error en el servidor.');
       }
 
-      // 4. Si el login es exitoso, guardar el Token y el Rol de manera segura
+      // 4. Si el login es exitoso, guardar el Token y el Rol de manera segura y multiplataforma
       if (data.token) {
-        await SecureStore.setItemAsync('userToken', data.token);
+        if (Platform.OS === 'web') {
+          localStorage.setItem('userToken', data.token);
+        } else {
+          await SecureStore.setItemAsync('userToken', data.token);
+        }
       }
       
       if (data.user && data.user.role_id) {
-        await SecureStore.setItemAsync('userRole', data.user.role_id.toString());
+        if (Platform.OS === 'web') {
+          localStorage.setItem('userRole', data.user.role_id.toString());
+        } else {
+          await SecureStore.setItemAsync('userRole', data.user.role_id.toString());
+        }
       }
 
       // 5. Redirigir al panel principal de la bodega
-      router.replace('/bodega/register'); 
+      router.replace('/bodega'); 
 
     } catch (error: any) {
       // LOG 4: Capturar cualquier error de red, de CORS o excepciones lanzadas
@@ -74,6 +82,7 @@ export default function BodegaLogin() {
       setLoading(false);
     }
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
