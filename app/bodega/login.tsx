@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Switch, Alert, ActivityIndicator, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function BodegaLogin() {
   const [email, setEmail] = useState('');
@@ -51,6 +52,19 @@ export default function BodegaLogin() {
       // 3. Manejar errores si el backend responde con error (ej. 401 Unauthorized)
       if (!response.ok) {
         throw new Error(data.message || 'Credenciales incorrectas o error en el servidor.');
+      }
+
+      if (data.user) {
+        // Creamos un objeto limpio solo con lo que necesitas
+        const userToSave = {
+          name: data.user.name,
+          email: data.user.email,
+          id: data.user.id // Recomendado conservarlo para que la tarjeta de perfil no quede vacía
+        };
+
+        // Guardamos este nuevo objeto filtrado
+        await AsyncStorage.setItem('userData', JSON.stringify(userToSave));
+        console.log('💾 Usuario (nombre, correo e id) guardado en la memoria');
       }
 
       // 4. Si el login es exitoso, guardar el Token y el Rol de manera segura y multiplataforma
