@@ -38,7 +38,7 @@ useEffect(() => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F172A', 
+    backgroundColor: 'rgba(13, 83, 149, 0.8)', 
     justifyContent: 'center',
     alignItems: 'center',
   },

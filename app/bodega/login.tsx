@@ -158,15 +158,15 @@ export default function BodegaLogin() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
-  header: { padding: 40, backgroundColor: '#0F172A', alignItems: 'center', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, paddingTop: 80 },
+  header: { padding: 40, backgroundColor: 'rgba(13, 83, 149, 0.8)', alignItems: 'center', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, paddingTop: 80 },
   headerText: { color: '#fff', fontSize: 28, fontWeight: 'bold', marginBottom: 8, textAlign: 'center' },
-  subHeaderText: { color: '#94A3B8', fontSize: 14, textAlign: 'center' },
+  subHeaderText: { color: '#fff', fontSize: 14, textAlign: 'center' },
   content: { flex: 1, padding: 30, justifyContent: 'center' },
-  labelText: { fontSize: 14, fontWeight: '600', color: '#1E293B', marginBottom: 6, marginTop: 15 },
+  labelText: { fontSize: 14, fontWeight: '600', color: 'rgba(13, 83, 149, 0.8)', marginBottom: 6, marginTop: 15 },
   input: { borderWidth: 1, borderColor: '#CBD5E1', padding: 14, borderRadius: 10, fontSize: 16, backgroundColor: '#F8FAFC' },
   rememberContainer: { flexDirection: 'row', alignItems: 'center', marginTop: 15 },
   rememberText: { marginLeft: 8, color: '#64748B' },
-  signInButton: { backgroundColor: '#0F172A', padding: 16, borderRadius: 12, alignItems: 'center', marginTop: 30, minHeight: 55, justifyContent: 'center' },
+  signInButton: { backgroundColor: 'rgba(13, 83, 149, 0.8)', padding: 16, borderRadius: 12, alignItems: 'center', marginTop: 30, minHeight: 55, justifyContent: 'center' },
   signInButtonDisabled: { backgroundColor: '#475569' }, // Color más claro cuando está cargando
   signInButtonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
   registerContainer: { flexDirection: 'row', justifyContent: 'center', marginTop: 25 },
