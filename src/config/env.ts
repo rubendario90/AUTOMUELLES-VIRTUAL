@@ -2,3 +2,7 @@ export const ENV = process.env.EXPO_PUBLIC_ENV || "development";
 
 export const API_URL =
   process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000";
+
+export const APP_ROLE = (process.env.EXPO_PUBLIC_ROLE || "BODEGA_JEFE").toUpperCase();
+
+export const PEDIDOS_API_PREFIX = process.env.EXPO_PUBLIC_PEDIDOS_API_PREFIX || "/pedidos";
