@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Necesario para leer los datos guardados
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter } from 'expo-router';
 
 // --- PALETA DE COLORES ---
 const COLORS = {
@@ -25,6 +26,7 @@ interface UserData {
 export default function Usuarios() {
   const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   // --- CARGA DINÁMICA DE DATOS ---
   useEffect(() => {
@@ -111,6 +113,14 @@ export default function Usuarios() {
             <MaterialCommunityIcons name="information-outline" size={18} color={COLORS.white} />
             <Text style={styles.supportText}>Si necesitas cambiar datos, contacta a soporte.</Text>
         </View>
+
+        <TouchableOpacity 
+          style={styles.adminButton}
+          onPress={() => router.push("/Gestion Usuarios/gestionusuarios")} 
+        >
+          <MaterialCommunityIcons name="shield-account" size={24} color={COLORS.white} />
+          <Text style={styles.adminButtonText}>Gestión de Usuarios (Admin)</Text>
+        </TouchableOpacity>
 
       </ScrollView>
     </SafeAreaView>
@@ -267,5 +277,26 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginLeft: 8,
     fontWeight: '500',
+  },
+  adminButton: {
+    flexDirection: 'row',
+    backgroundColor: COLORS.accent_yellow,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 25,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  adminButtonText: {
+    color: COLORS.bg_navy,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
   }
 });
