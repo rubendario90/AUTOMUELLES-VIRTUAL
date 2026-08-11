@@ -4,15 +4,23 @@ type RequestOptions = RequestInit & {
   json?: unknown;
 };
 
+const buildUrl = (path: string) => {
+  const baseUrl = API_URL.replace(/\/+$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  return `${baseUrl}${normalizedPath}`;
+};
+
 async function request<T = unknown>(
   path: string,
   options: RequestOptions = {}
 ): Promise<T> {
   const { json, headers, ...rest } = options;
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(buildUrl(path), {
     ...rest,
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
       ...headers,
     },

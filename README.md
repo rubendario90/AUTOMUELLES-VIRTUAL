@@ -6,13 +6,8 @@ Frontend Expo/React Native para AUTOMUELLES.
 
 ```bash
 npm install
-npm run start:dev
+npm run start
 ```
-
-También están disponibles:
-
-- `npm run start:qa`
-- `npm run start:prod`
 
 ## Módulo Bodega Jefe (Gestión de pedidos)
 
@@ -34,7 +29,7 @@ Rutas principales:
 Variables usadas por el módulo:
 
 - `EXPO_PUBLIC_API_URL` (base del backend)
-- `EXPO_PUBLIC_PEDIDOS_API_PREFIX` (default: `/pedidos`)
+- `EXPO_PUBLIC_PEDIDOS_API_PREFIX` (default: `/api/pedidos`)
 - `EXPO_PUBLIC_ROLE` (default: `BODEGA_JEFE`; acceso permitido: `BODEGA_JEFE`, `ADMIN`)
 
 ### Endpoints esperados
@@ -46,7 +41,3 @@ El módulo consume estos endpoints REST:
 - `GET {API_URL}{PEDIDOS_API_PREFIX}/:id`
 - `PUT {API_URL}{PEDIDOS_API_PREFIX}/:id`
 - `PATCH {API_URL}{PEDIDOS_API_PREFIX}/:id/estado`
-
-## Nota de alcance sobre `Automuelles-Pedidos`
-
-No fue posible acceder al repositorio privado `automuelles/Automuelles-Pedidos` desde este entorno (error de autenticación/404 en API), por lo que esta integración implementa la funcionalidad principal de pedidos en este frontend y deja documentada la configuración para completar cualquier ajuste fino cuando se habilite acceso al repositorio origen.

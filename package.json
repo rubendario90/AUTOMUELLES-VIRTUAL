@@ -3,18 +3,13 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "cp .env.production .env && expo start",
     "reset-project": "node ./scripts/reset-project.js",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
+    "android": "cp .env.production .env && expo start --android",
+    "ios": "cp .env.production .env && expo start --ios",
+    "web": "cp .env.production .env && expo start --web",
     "lint": "expo lint",
-    "start:dev": "cp .env.development .env && expo start",
-    "start:qa": "cp .env.qa .env && expo start",
-    "start:prod": "cp .env.production .env && expo start",
-    "build:dev": "cp .env.development .env && eas build --profile development",
-    "build:qa": "cp .env.qa .env && eas build --profile preview",
-    "build:prod": "cp .env.production .env && eas build --profile production"
+    "build": "cp .env.production .env && eas build --profile production"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
