@@ -23,7 +23,7 @@ async function request<T>(
     'Content-Type': 'application/json',
     Accept: 'application/json',
   };
-  if (token) headers['Authorization'] = `******;
+ if (token) headers['Authorization'] = token;
 
   const response = await fetch(`${API_URL}${path}`, {
     method,

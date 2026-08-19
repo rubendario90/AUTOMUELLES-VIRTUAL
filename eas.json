@@ -4,22 +4,11 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "env": {
-        "EXPO_PUBLIC_ENV": "development"
-      }
-    },
-    "preview": {
-      "distribution": "internal",
-      "env": {
-        "EXPO_PUBLIC_ENV": "qa"
-      }
-    },
     "production": {
       "autoIncrement": true,
       "env": {
+        "EXPO_PUBLIC_API_URL": "https://pedidos.automuellesdiesel.com/api",
+        "EXPO_PUBLIC_STORAGE_URL": "https://pedidos.automuellesdiesel.com/storage",
         "EXPO_PUBLIC_ENV": "production"
       }
     }
