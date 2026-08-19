@@ -4,43 +4,32 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 export default function BodegaLayout() {
   const colorScheme = useColorScheme();
 
+  const headerStyle = {
+    backgroundColor: colorScheme === 'dark' ? '#151718' : '#0D5395',
+  };
+  const headerTintColor = '#ffffff';
+
   return (
-    <Stack
-      screenOptions={{
-        // Esto le da estilo a la barra superior (header) de la bodega
-        headerStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#151718' : '#ffffff',
-        },
-        headerTintColor: colorScheme === 'dark' ? '#ffffff' : '#000000',
-      }}
-    >
-      {/* Pantalla de Login sin barra superior */}
+    <Stack screenOptions={{ headerStyle, headerTintColor, headerTitleStyle: { fontWeight: '700' } }}>
+      {/* Auth — sin header */}
+      <Stack.Screen name="login"                options={{ headerShown: false }} />
+      <Stack.Screen name="register"             options={{ headerShown: false }} />
+      <Stack.Screen name="registration-success" options={{ headerShown: false }} />
 
-      <Stack.Screen 
-        name="login" 
-        options={{ headerShown: false }} 
-      />
+      {/* Dashboard principal */}
+      <Stack.Screen name="index" options={{ title: 'Control de Bodega', headerBackVisible: false }} />
 
-       <Stack.Screen 
-        name="register" 
-        options={{ headerShown: false }} 
-      />
-      
-       <Stack.Screen 
-        name="registration-success" 
-        options={{ headerShown: false }} 
-      />
-      {/* Esta es la pantalla principal del panel de bodega */}
-      <Stack.Screen 
-        name="index" 
-        options={{ 
-          title: 'Control de Bodega',
-          headerBackVisible: false // Evita que al hacer "atrás" regresen al login
-        }} 
-      />
+      {/* Módulo operativo */}
+      <Stack.Screen name="facturas-pendientes"  options={{ title: 'Facturas Pendientes' }} />
+      <Stack.Screen name="gestionar-factura"    options={{ title: 'Gestionar Factura' }} />
+      <Stack.Screen name="revision-final"       options={{ title: 'Revisión Final' }} />
+      <Stack.Screen name="pedidos-parciales"    options={{ title: 'Pedidos Parciales' }} />
+      <Stack.Screen name="historial"            options={{ title: 'Historial de Facturas' }} />
 
-      {/* Si luego creas un archivo app/(bodega)/inventario.tsx, lo agregas aquí: */}
-      {/* <Stack.Screen name="inventario" options={{ title: 'Mi Inventario' }} /> */}
+      {/* Módulo Jefe de Bodega */}
+      <Stack.Screen name="reasignar-factura"    options={{ title: 'Reasignar Factura' }} />
+      <Stack.Screen name="admin"                options={{ title: 'Administración' }} />
+      <Stack.Screen name="notas"                options={{ title: 'Gestión de Notas' }} />
     </Stack>
   );
 }

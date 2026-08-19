@@ -69,8 +69,8 @@ export default function BodegaDashboard() {
   }, []);
 
   // Función genérica para navegar desde las tarjetas
-  const handleCardPress = (route) => {
-    router.push(route || "/bodega/proximamente");
+  const handleCardPress = (route: string) => {
+    router.push(route as any);
   };
 
   return (
@@ -139,10 +139,10 @@ export default function BodegaDashboard() {
 
           {/* Grid de Tarjetas Estilo "Services" */}
           <View style={styles.gridContainer}>
-            {/* Tarjeta 1: Entradas */}
+            {/* Tarjeta 1: Facturas Pendientes */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-1")}
+              onPress={() => handleCardPress("/bodega/facturas-pendientes")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -164,10 +164,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 2: Salidas */}
+            {/* Tarjeta 2: Revisión Final */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-2")}
+              onPress={() => handleCardPress("/bodega/revision-final")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -189,10 +189,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 3: Pendientes */}
+            {/* Tarjeta 3: Revisión Parcial (Mapeado a pedidos-parciales) */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-3")}
+              onPress={() => handleCardPress("/bodega/pedidos-parciales")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -214,10 +214,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 4: Bajo Stock */}
+            {/* Tarjeta 4: Asignar Factura */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-4")}
+              onPress={() => handleCardPress("/bodega/asignar-factura")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -239,10 +239,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 5: Bajo Stock */}
+            {/* Tarjeta 5: Reasignar Factura */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-4")}
+              onPress={() => handleCardPress("/bodega/reasignar-factura")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -264,10 +264,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 6: Bajo Stock */}
+            {/* Tarjeta 6: Facturas Asignadas */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-4")}
+              onPress={() => handleCardPress("/bodega/facturas-asignadas")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -289,10 +289,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 7: Bajo Stock */}
+            {/* Tarjeta 7: Notas */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-4")}
+              onPress={() => handleCardPress("/bodega/notas")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons
@@ -314,10 +314,10 @@ export default function BodegaDashboard() {
               </View>
             </TouchableOpacity>
 
-            {/* Tarjeta 8: Bajo Stock */}
+            {/* Tarjeta 8: Historial */}
             <TouchableOpacity
               style={styles.serviceCard}
-              onPress={() => handleCardPress("/bodega/default-4")}
+              onPress={() => handleCardPress("/bodega/historial")}
             >
               <View style={styles.cardTopRow}>
                 <MaterialCommunityIcons

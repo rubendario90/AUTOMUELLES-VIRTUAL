@@ -9,11 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "start:dev": "cp .env.development .env && expo start",
-    "start:qa": "cp .env.qa .env && expo start",
     "start:prod": "cp .env.production .env && expo start",
-    "build:dev": "cp .env.development .env && eas build --profile development",
-    "build:qa": "cp .env.qa .env && eas build --profile preview",
     "build:prod": "cp .env.production .env && eas build --profile production"
   },
   "dependencies": {

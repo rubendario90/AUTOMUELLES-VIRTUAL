@@ -11,7 +11,6 @@ export default function BodegaLogin() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // Lee la URL de tu backend automáticamente desde el archivo .env activo (.env.development, .env.qa, etc.)
   const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
   const handleSignIn = async () => {
