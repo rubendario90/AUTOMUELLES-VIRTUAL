@@ -6,6 +6,9 @@
   "build": {
     "production": {
       "autoIncrement": true,
+      "android": {
+        "buildType": "apk"
+      },
       "env": {
         "EXPO_PUBLIC_API_URL": "https://pedidos.automuellesdiesel.com/api",
         "EXPO_PUBLIC_STORAGE_URL": "https://pedidos.automuellesdiesel.com/storage",
